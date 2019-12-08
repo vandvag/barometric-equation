@@ -3,7 +3,7 @@ close all
 clc
 
 % Define element parameters
-n = 2;
+n = 3;
 a = n;
 l = a / n;
 
@@ -37,7 +37,7 @@ legend
 figure(2)
 hold on
 
-for i=1:size(phis,1)
+for i=1:size(phis,1)-2
     for j=1:size(matInt,1)
 %         if j~=i
         plot(x, phis(i,:) .* matInt(j, :), 'DisplayName', ['\phi_{', num2str(i), '}', '[(A^*A)^{1/2}\phi_{e', num2str(j),'}]'])

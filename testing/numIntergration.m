@@ -13,12 +13,9 @@ phi22 = @(x) x / l - 1;
 matInt1 = @(x, n) 1/(pi*l) * (log((tan(tau*(n*l + x)) * tan(tau*abs((n-1)*l-x))) / (tan(tau*abs(n*l - x)) * tan(tau*((n-1)*l+x)))) - log((tan(tau*((n+1)*l + x)) * tan(tau*abs((n)*l-x))) / (tan(tau*abs((n+1)*l - x)) * tan(tau*((n)*l+x)))));
 matInt2 = @(x, n) 1/(pi*l) * log((tan(tau*(n*l + x)) * tan(tau*abs((n-1)*l-x))) / (tan(tau*abs(n*l - x)) * tan(tau*((n-1)*l+x))));
 
-sumArr = zeros(20,1);
-
-for j=1:100
 % Gauss-Jacobi points weights
-[xj1, wj1] = GaussJacobi(j,0,0.5);
-[xj2, wj2] = GaussJacobi(j,0.5,0);
+[xj1, wj1] = GaussJacobi(6,0,0.5);
+[xj2, wj2] = GaussJacobi(6,0.5,0);
 
 % Integration from 0 to l
 sum11 = 0;
@@ -47,4 +44,3 @@ sumArr(j) = sum11;
 sum12 = sum12 * (1 / (2*pi*l));
 sum21 = sum21 * (1 / (2*pi*l));
 sum22 = sum22 * (1 / (2*pi*l));
-end
