@@ -40,7 +40,6 @@ for i=1:length(xj1)
 end
 
 sum11 = sum11 * (1 / (2*pi*l));
-sumArr(j) = sum11;
 sum12 = sum12 * (1 / (2*pi*l));
 sum21 = sum21 * (1 / (2*pi*l));
 sum22 = sum22 * (1 / (2*pi*l));
