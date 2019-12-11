@@ -5,6 +5,7 @@ a = 2;
 l = a / n;
 tau = pi / (4*a);
 
+%% SYSTEM MATRIX M
 % Define the functions
 phi11 = @(x) x / l;
 phi12 = @(x) 2 - x/l;
@@ -43,3 +44,7 @@ sum11 = sum11 * (1 / (2*pi*l));
 sum12 = sum12 * (1 / (2*pi*l));
 sum21 = sum21 * (1 / (2*pi*l));
 sum22 = sum22 * (1 / (2*pi*l));
+
+%% RIGHT-HAND SIDE
+
+
