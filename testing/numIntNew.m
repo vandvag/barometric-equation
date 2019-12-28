@@ -21,6 +21,8 @@ M = zeros(n,n);
 xis1 = zeros(length(xj1),1);
 xis2 = zeros(length(xj1),1);
 
+% TODO add gauss weights
+% TODO differentiate between xj1, xj2
 %% Integration from 0 to l
 weight = (l-0) / 2;
 % Calculate the Gauss Point Coordinates
@@ -29,8 +31,26 @@ for i=1:length(xj1)
   xis2(i) = coordChange(0,l,xj2(i));
 end
 % Evaluate the matrix integrands at the the Gauss points
-matInts = matrixIntegrands(n,a,xis);
-shapeFncs = shapeFunctions
+matInts = matrixIntegrands(n,a,xis1);
+shapeFncs = shapeFunctions(n,a,xis1);
+for i=1:n
+  for j=1:n
+    M(i,j) = M(i,j) + sum(shapeFncs(i,:) .* matInts(j,:));
+  end
+end
 
-
-
+%% Integration from l to a
+weight = (l-0) / 2;
+                                % Calculate the Gauss Point Coordinates
+for i=1:length(xj1)
+  xis1(i) = coordChange(l,a,xj1(i));
+  xis2(i) = coordChange(l,a,xj2(i));
+end
+                        % Evaluate the matrix integrands at the the Gauss points
+matInts = matrixIntegrands(n,a,xis1);
+shapeFncs = shapeFunctions(n,a,xis1);
+for i=1:n
+  for j=1:n
+    M(i,j) = M(i,j) + sum(shapeFncs(i,:) .* matInts(j,:));
+  end
+end

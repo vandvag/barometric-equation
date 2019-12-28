@@ -3,10 +3,6 @@ function shapeFncs = shapeFunctions(n,a,x)
 %   Detailed explanation goes here
 
 l = a / n;
-% Create domain discretization
-numPoints = 1000;
-
-x = linspace(0, a, numPoints);
 shapeFncs = zeros(n, length(x));
 
 for k=1:n

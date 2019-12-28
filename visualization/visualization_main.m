@@ -11,10 +11,10 @@ c = 1;
 p0 = 1;
 
 % Discretization
-x = linspace(0,a,1000);
+x = linspace(0,a,100);
 
 % Get shape functions at each point
-phis = shapeFunctions(n, a);
+phis = shapeFunctions(n, a, x);
 matInt = matrixIntegrands(n, a, x);
 
 figure(1)
