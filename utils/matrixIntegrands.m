@@ -1,4 +1,4 @@
-function matInt = matrixIntegrands(n,a, x)
+function matInt = matrixIntegrands(n,a,x)
 %UNTITLED5 Summary of this function goes here
 %   Detailed explanation goes here
 

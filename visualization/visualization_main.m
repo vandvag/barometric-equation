@@ -9,9 +9,12 @@ l = a / n;
 tau = pi / (4*a);
 c = 1;
 p0 = 1;
-% Get shape functions at each point
 
-[x, phis] = shapeFunctions(n, a);
+% Discretization
+x = linspace(0,a,1000);
+
+% Get shape functions at each point
+phis = shapeFunctions(n, a);
 matInt = matrixIntegrands(n, a, x);
 
 figure(1)
