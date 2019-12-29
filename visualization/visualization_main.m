@@ -11,7 +11,7 @@ c = 1;
 p0 = 1;
 
 % Discretization
-x = linspace(0,a,100);
+x = linspace(0,a,1000);
 
 % Get shape functions at each point
 phis = shapeFunctions(n, a, x);
@@ -44,9 +44,9 @@ hold on
 
 for i=1:size(phis,1)
     for j=1:size(matInt,1)
-        if j~=i
+        % if j~=i
         plot(x, phis(i,:) .* matInt(j, :), 'DisplayName', ['\phi_{', num2str(i), '}', '[(A^*A)^{1/2}\phi_{e', num2str(j),'}]'])
-        end
+        % end
     end
 end
 title('Intergrands')
