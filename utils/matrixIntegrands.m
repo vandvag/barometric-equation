@@ -1,6 +1,14 @@
 function matInt = matrixIntegrands(n,a,x)
-%UNTITLED5 Summary of this function goes here
-%   Detailed explanation goes here
+% Evaluates the matrix integrands at specific positions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INPUT:
+% n: Number of elements
+% a: Length of the domain
+% x: Vector containing the points at which the shape functions will be evaluated
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% OUPUT
+% matInt: Array containing the value of each matrix integrand at each point x
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 l = a / n;
 matInt = zeros(n, length(x));

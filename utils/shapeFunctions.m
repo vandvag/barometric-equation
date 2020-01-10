@@ -1,7 +1,14 @@
 function shapeFncs = shapeFunctions(n,a,x)
-%UNTITLED6 Summary of this function goes here
-%   Detailed explanation goes here
-
+% Evaluates the shape functions at specific positions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INPUT:
+% n: Number of elements
+% a: Length of the domain
+% x: Vector containing the points at which the shape functions will be evaluated
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% OUPUT
+% shapeFncs: Array containing the value of each shape function at each point x
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 l = a / n;
 shapeFncs = zeros(n, length(x));
 
