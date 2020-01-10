@@ -39,11 +39,12 @@ end
 matInts = matrixIntegrands(n,a,xis1);
 shapeFncs = shapeFunctions(n,a,xis1);
 for i=1:n
-  for j=1:n
+  for j=i:n
     for k=1:numGP
       M(i,j) = M(i,j) + shapeFncs(i,k) * matInts(j, k) * (1-xj1(k))^(-0.5) * weightCoord * wj1(k);
     end
   end
+  M(j,i) = M(i,j)
 end
 
 %% Integration from l to a
@@ -57,11 +58,12 @@ end
 matInts = matrixIntegrands(n,a,xis1);
 shapeFncs = shapeFunctions(n,a,xis1);
 for i=1:n
-  for j=1:n
+  for j=i:n
     for k=1:numGP
       M(i,j) = M(i,j) + shapeFncs(i,k) * matInts(j, k) * (1-xj1(k))^(-0.5) * weightCoord * wj1(k);
     end
   end
+  M(j,i) = M(i,j)
 end
 
 M
