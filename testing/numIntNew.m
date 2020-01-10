@@ -44,7 +44,7 @@ for i=1:n
       M(i,j) = M(i,j) + shapeFncs(i,k) * matInts(j, k) * (1-xj1(k))^(-0.5) * weightCoord * wj1(k);
     end
   end
-  M(j,i) = M(i,j)
+  M(j,i) = M(i,j);
 end
 
 %% Integration from l to a

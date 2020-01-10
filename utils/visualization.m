@@ -1,3 +1,7 @@
+%===============================================================================
+% Utility for visualizing the shape functions and the matrix integrands
+%===============================================================================
+
 clear all
 close all
 clc

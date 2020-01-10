@@ -1,6 +1,6 @@
 function p_FEM = FEM(C, initialPressure, nodeCoords, locationMatrix)
-%FEM: Calculates the solution of the ODE via the finite element
-%      method using the initial conditions of the problem
+% Calculates the solution of the ODE via the finite element
+% method using the initial conditions of the problem
 %==========================================================================
 %INPUT
 %   C                  ... C = Mg/RT (1/m)
@@ -8,6 +8,7 @@ function p_FEM = FEM(C, initialPressure, nodeCoords, locationMatrix)
 %   initialPressure    ... Initial pressure (bar)
 %   nodeCoords         ... Nodal spacing, Schrittweite (m)
 %   locationMatrix     ... Number of steps, nodes (-)
+%==========================================================================
 %OUTPUT
 %   p_FEM              ... Array of pressure computed at each node (bar)
 %==========================================================================

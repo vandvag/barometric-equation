@@ -1,6 +1,14 @@
 function Kg = assembler(C, elementLength, locationMatrix)
-%UNTITLED4 Summary of this function goes here
-%   Detailed explanation goes here
+% Assembles the global stiffness matrix
+%==========================================================================
+% INPUT
+% C: Constant C from the differential equation
+% elementLength: The length of one element
+% locationMatrix: Array containing the IDs of the nodes of each element
+%==========================================================================
+% OUPUT
+% Kg: Global stiffness matrix
+%==========================================================================
 
 numElements = length(locationMatrix);
 

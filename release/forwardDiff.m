@@ -1,14 +1,15 @@
 function pressureForward = forwardDiff(C,...
                                        initialPressure,...
                                        nodeCoords)
-%forwardDiff: Calculates the solution of the ODE via the forward
-%             difference method using the
-%             initial conditions of the problem
+% Calculates the solution of the ODE via the forward
+% difference method using the
+% initial conditions of the problem
 %==========================================================================
 %INPUT
 %   C                  ... C = Mg/RT (1/m)
 %   initialPressure    ... Initial pressure (bar)
 %   nodeCoords         ... Domain Discretization (array)
+%==========================================================================
 % OUTPUT
 %   pressureForward    ... Array of pressure computed at each node (bar)
 %==========================================================================

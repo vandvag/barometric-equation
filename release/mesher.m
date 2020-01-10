@@ -1,12 +1,12 @@
 function [nodalCoords, LocationMatrix] = mesher(l,nElem)
-%mesh Discretizes an 1D domain
+% Discretizes an 1D domain
 %==========================================================================
 %INPUT
 %   l                  ... Length of the discretized domain (m)
 %   nElem              ... Number of elements (m)
 %OUTPUT
 %   nodalCoords: array     ... The coordinates of every node (m)
-%   LocationMatrix: array  ... Array of pressure computed at each node (bar)
+%   LocationMatrix: array  ... Array containing the node IDs of each element
 %==========================================================================
 % Initialize Arrays
 nodalCoords = zeros(1,nElem + 1);

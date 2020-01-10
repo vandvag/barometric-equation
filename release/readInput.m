@@ -7,10 +7,10 @@
           domainLength,...
           numElements] = readInput(inputFilename)
 %readInput: Reads the values given in the input file
-%---------------------------------------------------
+%===============================================================================
 %INPUT
 %   inputFilename   ... Name of the input file
-%
+%===============================================================================
 %OUTPUT
 %   maxAltitude     ... Maximum altitude (m)
 %   C               ... C = Mg/RT (1/m)
@@ -18,6 +18,7 @@
 %   initialPressure ... Initial pressure (bar)
 %   nodeSpacing     ... Nodal spacing, Schrittweite (m)
 %   numSteps        ... Number of elements (-)
+%===============================================================================
 
 inputFileId = fopen(inputFilename, 'r');
 
