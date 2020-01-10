@@ -1,6 +1,9 @@
 function [nodesGauss, weightsGauss] = gaussInt(numGaussPoints, alpha, beta)
 % Calculates the nodes and the weights of the Gauss Jacobi
-% quadrature
+% quadrature:
+% f(x) * (1 - x) ^ alpha * (1 + x) ^ beta
+% https://www.cs.purdue.edu/archives/2002/wxg/codes/OPQ.html
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % INPUT:
 % numGaussPoints: number of Gauss Points (nodes)
 % alpha: alpha parameter
