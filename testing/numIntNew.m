@@ -8,11 +8,12 @@ l  = a / n;
 tau = pi / (4*a);
 
 %% Gauss-Jacobi points weights
-numGaussPoints = 10;
+numGP = 30;
+
 %alpha= 0.5, beta =0
-[xj1, wj1] = GaussJacobi(numGaussPoints,0,0.5);
+[xj1, wj1] = gaussInt(numGP, 0.5, 0);
 %alpha=0, beta=0.5
-[xj2, wj2] = GaussJacobi(numGaussPoints,0.5,0);
+[xj2, wj2] = gaussInt(numGP, 0, 0.5);
 
 %% Definition of M matrix
 
@@ -39,14 +40,14 @@ matInts = matrixIntegrands(n,a,xis1);
 shapeFncs = shapeFunctions(n,a,xis1);
 for i=1:n
   for j=1:n
-    for k=1:numGaussPoints
+    for k=1:numGP
       M(i,j) = M(i,j) + shapeFncs(i,k) * matInts(j, k) * (1-xj1(k))^(-0.5) * weightCoord * wj1(k);
     end
   end
 end
 
 %% Integration from l to a
-weight = (l-0) / 2;
+weightCoord = (a-l) / 2;
 % Calculate the Gauss Point Coordinates
 for i=1:length(xj1)
   xis1(i) = coordChange(l,a,xj1(i));
@@ -57,7 +58,7 @@ matInts = matrixIntegrands(n,a,xis1);
 shapeFncs = shapeFunctions(n,a,xis1);
 for i=1:n
   for j=1:n
-    for k=1:numGaussPoints
+    for k=1:numGP
       M(i,j) = M(i,j) + shapeFncs(i,k) * matInts(j, k) * (1-xj1(k))^(-0.5) * weightCoord * wj1(k);
     end
   end

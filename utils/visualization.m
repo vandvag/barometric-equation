@@ -3,7 +3,7 @@ close all
 clc
 
 % Define element parameters
-n = 2;
+n = 3;
 a = n;
 l = a / n;
 tau = pi / (4*a);
@@ -55,14 +55,14 @@ grid on
 legend
 
 %% Visualize G_{1/2}
-G = @(x,y) (x/l) * log(tan(tau*(x+y)) / tan(tau*abs(x-y))) *exp(c*y);
-G12_plot = zeros(length(x), 1);
-
-figure(3)
-for i=1:length(x)
-    G12_plot(i) = G(a/6, x(i));
-end
-
-plot(x, G12_plot)
-
-title('RHS')
+% G = @(x,y) (x/l) * log(tan(tau*(x+y)) / tan(tau*abs(x-y))) *exp(c*y);
+% G12_plot = zeros(length(x), 1);
+% 
+% figure(3)
+% for i=1:length(x)
+%     G12_plot(i) = G(a/6, x(i));
+% end
+% 
+% plot(x, G12_plot)
+% 
+% title('RHS')
