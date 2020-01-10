@@ -22,11 +22,6 @@ M = zeros(n,n);
 xis1 = zeros(length(xj1),1);
 xis2 = zeros(length(xj1),1);
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TODO add gauss weights
-% TODO differentiate between xj1, xj2
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %% Integration from 0 to l
 % weight introduced due to coordinate change
 weightCoord = (l-0) / 2;
@@ -63,7 +58,7 @@ for i=1:n
       M(i,j) = M(i,j) + shapeFncs(i,k) * matInts(j, k) * (1-xj1(k))^(-0.5) * weightCoord * wj1(k);
     end
   end
-  M(j,i) = M(i,j)
+  M(j,i) = M(i,j);
 end
 
 M
