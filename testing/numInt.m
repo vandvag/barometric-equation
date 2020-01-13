@@ -1,6 +1,6 @@
 clear all
 
-n  = 2;
+n  = 20;
 c  = 1;
 p0 = 1;
 a  = n;

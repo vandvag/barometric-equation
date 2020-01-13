@@ -6,7 +6,7 @@ ND_SPACING = 500
 PLOTS = 1 2 3 4
 
 % Variable
-% MAX_ALT		% maximum altitude (m)
+% MAX_ALT	% maximum altitude (m)
 % C         	% c= M*g/R*T (1/m) at T = 288K
 % INIT_ALT      % initial altitude (m)
 % INIT_PRESS	% initial pressure (bar) ==> BC
