@@ -10,10 +10,11 @@ tau = pi / (4*a);
 %% Gauss-Jacobi points weights
 numGP = 30;
 
+alpha = 0.5;
 %alpha= 0.5, beta =0
-[xj1, wj1] = gaussInt(numGP, 0.5, 0);
+[xj1, wj1] = gaussInt(numGP, alpha, 0);
 %alpha=0, beta=0.5
-[xj2, wj2] = gaussInt(numGP, 0, 0.5);
+[xj2, wj2] = gaussInt(numGP, 0, alpha);
 
 %% Definition of M matrix
 
@@ -21,6 +22,7 @@ M = zeros(n,n);
 
 xis1 = zeros(length(xj1),1);
 xis2 = zeros(length(xj1),1);
+
 
 for elem=1:(n-1)
     %% Integration from (n-1) * l to n * l
