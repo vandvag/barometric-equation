@@ -1,4 +1,15 @@
 function shapeF = shapeFncs(x, k, n, a)
+% Evaluates the k-th shape function at given point x
+%===============================================================================
+% INPUT:
+% x: Evaluation point
+% k: k-th shape function to be evaluated
+% n: Number of shape functions defined by the discretization
+% a: Domain length
+%===============================================================================
+% OUTPUT:
+% shapeF: Evaluation of the shape function at the point x
+%===============================================================================
 
 l = a / n;
 
