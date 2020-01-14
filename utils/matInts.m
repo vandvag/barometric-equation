@@ -18,3 +18,5 @@ if m == n
     matInt = 1 / (pi * l) * log((tan(tau*(n*l+y)) * tan(tau*abs((n-1)*l-y))) / (tan(tau*abs(n*l-y)) * tan(tau*((n-1)*l+y))));
 else
     matInt = 1/(pi*l) * (log(tan(tau*(m*l+y)) * tan(tau*abs((m-1)*l-y)) / (tan(tau*abs(m*l-y)) * tan(tau*((m-1)*l+y)))) - log(tan(tau*((m+1)*l+y)) * tan(tau*abs(m*l-y)) / (tan(tau*abs((m+1)*l-y)) * tan(tau*(m*l+y)))));
+end
+end
