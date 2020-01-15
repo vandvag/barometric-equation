@@ -44,6 +44,11 @@ pressureBackward = backwardDiff(C,...
 % Compute the solution via the Finite Element Method
 
 pressureFEM = FEM(C, initialPressure, nodalCoords, locationMatrix);
+
+%%
+% Fractional
+
+pressureFrac = fractional(C, initialPressure, domainLength, numElements);
 %%
 % Plot Results
 
@@ -66,5 +71,6 @@ for i=1:length(resultsToPlot)
     end
 end
 
+plot(nodalCoords, pressureFrac, 'DisplayName', 'Fractional')
 legend show
 grid on

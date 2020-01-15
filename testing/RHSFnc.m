@@ -1,13 +1,5 @@
-% n = 20;
-% c = 1;
-% p0 = 1;
-% a = n;
-% l = a / n;
-% tau = pi / (4*a);
+function bFrac = RHSFnc(n, a, c, p0, numGP, alpha)
 
-% numGP = 5;
-
-alpha = -0.5;
 [xj1, wj1] = gaussInt(numGP, alpha, 0);
 [xj2, wj2] = gaussInt(numGP, 0, alpha + 1);
 [xj3, wj3] = gaussInt(numGP, 0, alpha);
@@ -29,9 +21,8 @@ for k=1:n
             % First sum
             bFrac(k) = bFrac(k) + 2 * p0 * c^2 * (a/4)^(2+alpha) * shapeFncs(x1, k, n, a) * G12(x1,y1, a) * exp(c*y1) * (abs(x1 - y1))^(-alpha) * wj1(gx) * wj2(gy);
             % Second sum
-            bFrac(k) = bFrac(k) + 2 * p0 * c^2 * (a/4)^(266+alpha) * shapeFncs(x2, k, n, a) * G12(x2,y2, a) * exp(c*y2) * (abs(x2 - y2))^(-alpha) * wj3(gx) * wj4(gy);
+            bFrac(k) = bFrac(k) + 2 * p0 * c^2 * (a/4)^(2+alpha) * shapeFncs(x2, k, n, a) * G12(x2,y2, a) * exp(c*y2) * (abs(x2 - y2))^(-alpha) * wj3(gx) * wj4(gy);
         end
     end
 end
-
-bFrac
+end
