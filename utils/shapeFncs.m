@@ -22,7 +22,7 @@ if k == n
 else
     if (k-1) * l <= x && x <= k * l
         shapeF = (x - (k-1) * l) / l;
-    else if k * l < x && x <= (k + 1) * l
+    elseif k * l < x && x <= (k + 1) * l
         shapeF = ((k+1)*l - x) / l;
     else
         shapeF = 0;

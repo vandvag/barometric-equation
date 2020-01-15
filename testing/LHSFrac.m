@@ -1,13 +1,13 @@
 clear all
 
-n = 2;
-c = 1;
-p0 = 1;
-a = n;
+n = 20;
+c = 1.1865e-4;
+p0 = 1.013;
+a = 10000;
 l = a / n;
 tau = pi / (4*a);
 
-numGP = 30;
+numGP = 50;
 alpha = -0.5;
 
 %alpha = -0.5, beta = 0
@@ -27,9 +27,9 @@ for k=1:n
             x2 = l/2 * xj2(gx) + (2*k+1)*l/2;
 
             % first part of the sum
-            M(k,m) = M(k,m) + wj1(gx) * matInts(x1, m, n, a) * shapeFncs(x1, k, n, a) * (l/2)^(1+alpha) * (k*l-x1)^(-alpha);
+            M(k,m) = M(k,m) + wj1(gx) * matInts(x1, m, n, a) * shapeFncs(x1, k, n, a) * (l/2)^(1+alpha);
             % second part of the sum
-            M(k,m) = M(k,m) + wj2(gx) * matInts(x2, m, n, a) * shapeFncs(x2, k, n, a) * (l/2)^(1+alpha) * (x2 - k*l)^(-alpha);
+            M(k,m) = M(k,m) + wj2(gx) * matInts(x2, m, n, a) * shapeFncs(x2, k, n, a) * (l/2)^(1+alpha);
         end
     end
 end

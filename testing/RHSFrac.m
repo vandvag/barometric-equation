@@ -5,37 +5,33 @@
 % l = a / n;
 % tau = pi / (4*a);
 
-numGP = 5;
+% numGP = 5;
 
-alpha = 0.5;
+alpha = -0.5;
 [xj1, wj1] = gaussInt(numGP, alpha, 0);
-shapeFncs1 = shapeFunctions(n, a, xj1);
 [xj2, wj2] = gaussInt(numGP, 0, alpha + 1);
-shapeFncs2 = shapeFunctions(n, a, xj2);
 [xj3, wj3] = gaussInt(numGP, 0, alpha);
-shapeFncs3 = shapeFunctions(n, a, xj3);
 [xj4, wj4] = gaussInt(numGP, alpha + 1, 0);
-shapeFncs4 = shapeFunctions(n, a, xj4);
 
 
-bFractional = zeros(n,1);
+bFrac = zeros(n,1);
 
 % Main Loop
-for i=1:n
-    sum = 0;
-    for gx=1:numGP % xi
-        for gy=1:numGP % eta
-            x = a / 2 * (1 + xj2(gy));
-            y = a / 4 * (1 + xj2(gy)) * (1 + xj1(gx));
+for k=1:n
+    for gx=1:numGP % xis
+        for gy=1:numGP % etas
+            % Coordinate transformations
+            x1 = a / 2 * (1 + xj2(gy));
+            y1 = a / 4 * (1 + xj2(gy)) * (1 + xj1(gx));
+            x2 = a / 2 * (1 + xj4(gy));
+            y2 = a / 4 * (1 - xj4(gy)) * xj3(gx) + a / 4 * (3 + xj4(gy));
 
-            sum = sum + p0 * c^2 / pi * (a / 4) ^ (1+alpha) * wj1(gx) * wj2(gy) * shapeFncs(i, gy) * log(tan(tau*(x+y)) / tan(tau*abs(x-y))) * exp(c*y) * abs(x-y)^(-alpha);
-
-            x = a / 2 * (1 + xj4(gy));
-            y = a / 4 * (1 + xj4(gy)) * (1 + xj3(gx));
-
-            sum = sum + p0 * c^2 / pi * (a / 4) ^ (1+alpha) * wj3(gx) * wj4(gy) * shapeFncs(i, gy) * log(tan(tau*(x+y)) / tan(tau*abs(x-y))) * exp(c*y) * abs(x-y)^(-alpha);
+            % First sum
+            bFrac(k) = bFrac(k) + 2 * p0 * c^2 * (a/4)^(2+alpha) * shapeFncs(x1, k, n, a) * G12(x1,y1, a) * exp(c*y1) * (abs(x1 - y1))^(-alpha) * wj1(gx) * wj2(gy);
+            % Second sum
+            bFrac(k) = bFrac(k) + 2 * p0 * c^2 * (a/4)^(266+alpha) * shapeFncs(x2, k, n, a) * G12(x2,y2, a) * exp(c*y2) * (abs(x2 - y2))^(-alpha) * wj3(gx) * wj4(gy);
         end
     end
-    bFractional(i) = sum;
 end
 
+bFrac
