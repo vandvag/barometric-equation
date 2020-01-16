@@ -2,9 +2,14 @@
 
 The MATLAB code provided in this repository tries to solve the barometric pressure differential equation
 
-## How it works
+## Input
 
-The input of the problem is given via the ```input.txt``` file. The main function calls the methods found in the ```src``` folder. These are:
+The input of the problem is given via the ```input.txt``` file. Change the values there.
+
+## Main function
+The main function ```main.m``` calls the methods found in the ```src``` folder.
+
+## ```src```
 
 - ```readInput.m``` : Reads the ```input.txt``` file and outputs the values of the variables stored in it
 - ```analyticalSolution.m```: Provides the pressure at each discretization point by evaluating the analytical solution of the problem
@@ -19,10 +24,11 @@ The input of the problem is given via the ```input.txt``` file. The main functio
   - ```LHSFrac.m```: Calculates the left-hand side of the equation
   - ```RHSFrac.m```: Calculates the right-hand side of the equation
 
-Furthermore there are some utility functions, defined in the ```utils``` folder:
+## ```utils```
 
 - ```G12.m```: Evaluates the fractional derivative ```G_(1/2)``` at points x and y
 - ```matInts.m```: Evaluates the matrix integrands M as defined in the report
 - ```shapeFncs.m```: Evaluates the k-th shape function at a point x, as they are defined in the report.
 - ```mesher.m```: Utility for providing a discretization of the domain
 - ```visualization```: Utility for providing plots of the shape functions and the matrix integrands, as defined in the report. Main method is the ```visualization.m```
+- ```gauss```: Provides the nodes and weights for the Gauss-Jacobi integration scheme. Main method is the ````gaussInt.m```
