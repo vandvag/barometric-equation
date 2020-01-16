@@ -1,6 +1,6 @@
 clear all;
 clc;
-% close all;
+close all;
 
 inputFilename = 'input.txt';
 
@@ -48,7 +48,7 @@ pressureFEM = FEM(C, initialPressure, nodalCoords, locationMatrix);
 %%
 % Fractional
 
-pressureFrac = fractional(C, initialPressure, domainLength, numElements);
+pressureFrac = fractional(C, initialPressure, domainLength, numElements, nodalCoords);
 %%
 % Plot Results
 
@@ -68,9 +68,11 @@ for i=1:length(resultsToPlot)
             plot(nodalCoords, pressureBackward, 'DisplayName', 'Backward Differences')
         case 4
             plot(nodalCoords, pressureFEM,'--', 'DisplayName', 'FEM')
+        case 5
+            plot(nodalCoords, pressureFrac, 'DisplayName', 'Fractional')
     end
 end
 
-plot(nodalCoords, pressureFrac, 'DisplayName', 'Fractional')
+
 legend show
 grid on

@@ -27,7 +27,7 @@ C = fscanf(inputFileId, '\nC = %f', 1);
 initialAltitude = fscanf(inputFileId, '\nINIT_ALT = %f', 1);
 initialPressure = fscanf(inputFileId, '\nINIT_PRESS = %f', 1);
 nodeSpacing = fscanf(inputFileId, '\nND_SPACING = %f', 1);
-resultsToPlot = fscanf(inputFileId, '\nPLOTS = %d %d %d %d\n',4);
+resultsToPlot = fscanf(inputFileId, '\nPLOTS = %d %d %d %d %d\n',5);
 domainLength = maxAltitude - initialAltitude;
 numElements = (domainLength / nodeSpacing);
 

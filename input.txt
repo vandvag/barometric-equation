@@ -3,7 +3,7 @@ C = 1.1865e-04
 INIT_ALT = 0
 INIT_PRESS = 1.013
 ND_SPACING = 500
-PLOTS = 1 2 3 4
+PLOTS = 1 2 3 4 5
 
 % Variable
 % MAX_ALT	% maximum altitude (m)
