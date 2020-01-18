@@ -1,0 +1,97 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+
+\begin{document}
+
+The left-hand side of the equation is given by:
+
+\begin{equation} \label{eq:system_matrix}
+    M := \langle \phi_{ek} | [(A^*A)^{1/2}\phi_{em}] \rangle_{k,m=1,\dots,n}
+\end{equation}
+where:
+
+\begin{equation}
+    \phi_{ek}(x) =
+    \begin{cases}
+        \dfrac{x - (k-1)l}{l} \quad x \in [(k-1)l, kl] \\
+        \dfrac{(k+1)l - x}{l} \quad x \in [kl, (k+1)l]
+    \end{cases}
+\end{equation}
+for $k \in \{1, \dots, n-1\}$ and for $k=n$:
+
+\begin{equation}
+    \phi_{en}(x) =
+    \dfrac{x - (n-1)l}{l} \quad x \in [(n-1)l, nl] \quad x \in [(n-1)l, nl]
+\end{equation}
+Meanwhile, it holds true that:
+
+\begin{multline}
+    [(A^*A)^{1/2}\phi_{em}](y) = \\ \frac{1}{\pi l}\left\{ \ln{\left[\dfrac{\tan{\left(\dfrac{\pi[ml+y]}{4a}\right)}\tan{\left(\dfrac{\pi|(m-1)l-y|}{4a}\right)}}{\tan{\left(\dfrac{\pi|ml-y|}{4a}\right)}\tan{\left(\dfrac{\pi[(m-1)l+y]}{4a}\right)}}\right]} \right. \\
+     \left. -  \ln{\left[\dfrac{\tan{\left(\dfrac{\pi[(m+1)l+y]}{4a}\right)}\tan{\left(\dfrac{\pi|ml-y|}{4a}\right)}}{\tan{\left(\dfrac{\pi|(m+1)l-y|}{4a}\right)}\tan{\left(\dfrac{\pi[ml+y]}{4a}\right)}}\right]}\right\}
+\end{multline}
+for every $m \in \{1,\dots,n-1\}$
+
+\begin{equation}
+    [(A^*A)^{1/2}\phi_{en}](y) = \frac{1}{\pi l} \ln{\left[\dfrac{\tan{\left(\dfrac{\pi[nl+y]}{4a}\right)}\tan{\left(\dfrac{\pi|(n-1)l-y|}{4a}\right)}}{\tan{\left(\dfrac{\pi|nl-y|}{4a}\right)}\tan{\left(\dfrac{\pi[(n-1)l+y]}{4a}\right)}}\right]}   
+\end{equation}
+Unpacking the equation (\ref{eq:system_matrix}):
+
+\begin{equation}
+    M_{km} = \int_0^a \phi_{ek} (x)[(A^*A)^{1/2}\phi_{em}](x)dx
+\end{equation}
+We take into account that this integrand has a singularity at $x=kl$ with $k \in \{1, \dots, n-1\}$. We perform the following split. Also from now on we set $[(A^*A)^{1/2}\phi_{em}](x) = f_m(x)$:
+
+\begin{equation*}
+    M_{km} = \int_0^{kl} \phi_{ek} (x)f_m(x)dx + \int_{kl}^a \phi_{ek} (x)f_m(x)dx
+\end{equation*}
+We then introduce the term $|x - kl|^{\alpha}$, in order to get rid of the singularity:
+
+\begin{equation*}
+    M_{km} = \int_0^{kl} \phi_{ek} (x)f_m(x)|x - kl|^{-\alpha}|x - kl|^{\alpha}dx + \int_{kl}^a \phi_{ek} (x)f_m(x)|x - kl|^{-\alpha}|x - kl|^{\alpha}dx
+\end{equation*}
+
+
+Setting $f_m(x) |x-kl|^{-\alpha} = g_m(x)$, with $-1<\alpha<0$, we can write:
+
+\begin{align*}
+    M_{km} &= \int_0^{kl} \phi_{ek} (x)g_m(x)(kl-x)^{\alpha}dx + \int_{kl}^a \phi_{ek} (x)g_m(x)(x - kl)^{\alpha}dx\\
+    &= \frac{kl}{2}\int\limits_{-1}^1 \phi_{ek}\left(\frac{kl}{2}\xi + \frac{kl}{2}\right)g_m\left(\frac{kl}{2}\xi + \frac{kl}{2}\right) \left(\frac{kl}{2}\right)^{\alpha}(1-\xi)^{\alpha}d\xi + \\
+    &+ \frac{a-kl}{2} \int\limits_{-1}^1\phi_{ek}\left(\frac{a-kl}{2}\xi + \frac{a+kl}{2}\right)g_m\left(\frac{a-kl}{2}\xi + \frac{a+kl}{2}\right) \left(\frac{a-kl}{2}\right)^{\alpha}(1+\xi)^{\alpha}d\xi \\
+    &= \left(\frac{kl}{2}\right)^{1+\alpha} \int\limits_{-1}^{1}\phi_{ek}\left(\frac{kl}{2}\xi + \frac{kl}{2}\right)g_m\left(\frac{kl}{2}\xi + \frac{kl}{2}\right)(1-\xi)^{\alpha}d\xi + \\
+    &+ \left(\frac{a-kl}{2}\right)^{1 + \alpha} \int\limits_{-1}^1\phi_{ek}\left(\frac{a-kl}{2}\xi + \frac{a+kl}{2}\right)g_m\left(\frac{a-kl}{2}\xi + \frac{a+kl}{2}\right) (1+\xi)^{\alpha}d\xi \\
+\end{align*}
+We substitute:
+
+\begin{equation*}
+    \tilde g_{1m}(\xi) = \phi_{ek}\left(\frac{kl}{2}\xi + \frac{kl}{2}\right)g_m\left(\frac{kl}{2}\xi + \frac{kl}{2}\right)
+\end{equation*}
+\begin{equation*}
+    \tilde g_{2m}(\xi) = \phi_{ek}\left(\frac{a-kl}{2}\xi + \frac{a+kl}{2}\right)g_m\left(\frac{a-kl}{2}\xi + \frac{a+kl}{2}\right)
+\end{equation*}
+This yields:
+
+\begin{equation}
+    M_{km} = \left(\frac{kl}{2}\right)^{1+\alpha} \int\limits_{-1}^{1} \tilde g_{1m}(\xi) (1+\xi)^{\alpha}d\xi + \left(\frac{a-kl}{2}\right)^{1 + \alpha}\int\limits_{-1}^{1} \tilde g_{2m}(\xi) (1-\xi)^{\alpha}d\xi
+\end{equation}
+Performing a Gauss-Jacobi integration scheme, we get:
+
+\begin{equation}
+    M_{km} \approx \left(\frac{kl}{2}\right)^{1+\alpha} \sum_{i}\tilde g_{1m}(\xi_i) w_i^{(\alpha,0)}+ \left(\frac{a-kl}{2}\right)^{1 + \alpha} \sum_i\tilde g_{1m}(\xi_i) w_i^{(0,\alpha)}
+\end{equation}
+
+\subsection*{Special case k=n}
+
+For the case that $k=n$, we follow the same procedure as above:
+
+\begin{equation}
+    M_{nn} \approx \left(\frac{a}{2}\right)^{1+\alpha} \sum_i \tilde g(\xi) w_i^{(\alpha, 0)}
+\end{equation}
+where:
+
+\begin{equation}
+    \tilde g(\xi) = \phi_{en}\left(\frac{a}{2}\xi + \frac{a}{2}\right)f\left(\frac{a}{2}\xi + \frac{a}{2}\right)(a-x)^{-\alpha}
+\end{equation}
+
+
+\end{document}
