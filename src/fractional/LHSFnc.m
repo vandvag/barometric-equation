@@ -28,10 +28,10 @@ for k=1:(n-1)
 end
 
 % Special case for k=n
-k = n; m = n;
 for gx=1:numGP
-    x = a / 2 * xj1(gx) + a  / 2;
+    x = a / 2 * xj1(gx) + a / 2;
     M(n,n) = M(n,n) + (a/2)^(1+alpha) * wj1(gx) * shapeFncs(x, n, n, a) * matInts(x, n, n, a)  * (a - x)^(-alpha);
+end
 
 % Make M symmetric
 for i=1:n
@@ -40,3 +40,4 @@ for i=1:n
     end
 end
 end
+
