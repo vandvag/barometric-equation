@@ -35,12 +35,15 @@ pFrac = M \ bFrac;
 % pFrac = [p0; pFrac];
 pFracTrans = zeros(length(pFrac), 1);
 
-% Transformation
+% Transformation (as described in the report) (Wrong)
+% for i=1:length(pFrac)
+%     pFracTrans(i) = initialPressure  - pFrac(i) * exp(- c * nodalCoords(i+1));
+% end
+
+% Transformation (Matthias Hinze)
 for i=1:length(pFrac)
-    pFracTrans(i) = initialPressure  - pFrac(i) * exp(- c * nodalCoords(i+1));
+    pFracTrans(i) = - c * p0 / (1 + c * a) * pFrac(i) + p0;
 end
 
 pFrac = [p0; pFracTrans];
-
-
 end
