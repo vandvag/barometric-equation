@@ -31,6 +31,8 @@ bFrac = RHSFnc(n, a, c, p0, numGP, alpha);
 
 % Solution of the system
 pFrac = M \ bFrac;
+
+% pFrac = [p0; pFrac];
 pFracTrans = zeros(length(pFrac), 1);
 
 % Transformation
@@ -39,4 +41,6 @@ for i=1:length(pFrac)
 end
 
 pFrac = [p0; pFracTrans];
+
+
 end
