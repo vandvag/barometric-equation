@@ -31,7 +31,7 @@ bFrac = RHSFnc(n, a, c, p0, numGP, alpha);
 
 % Solution of the system
 pFrac = M \ bFrac;
-
+pFrac = [0; pFrac]; % Application of the boundary condition (g)
 % pFrac = [p0; pFrac];
 pFracTrans = zeros(length(pFrac), 1);
 
@@ -42,8 +42,6 @@ pFracTrans = zeros(length(pFrac), 1);
 
 % Transformation (Matthias Hinze)
 for i=1:length(pFrac)
-    pFracTrans(i) = - c * p0 / (1 + c * a) * pFrac(i) + p0;
+    pFrac(i) = initialPressure  + pFrac(i) * exp(- c * nodalCoords(i)) - c*p0/(1+c*a)*nodalCoords(i);
 end
-
-pFrac = [p0; pFracTrans];
 end
