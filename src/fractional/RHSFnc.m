@@ -13,7 +13,7 @@ function bFrac = RHSFnc(n, a, c, p0, numGP, alpha)
 % bFrac: Global right-hand side vector
 %==========================================================================
 
-% 
+% Gauss-Jacobi integration nodes/weights
 [xj1, wj1] = gaussInt(numGP, alpha, 0);
 [xj2, wj2] = gaussInt(numGP, 0, alpha + 1);
 [xj3, wj3] = gaussInt(numGP, 0, alpha);
