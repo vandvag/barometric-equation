@@ -1,6 +1,17 @@
 function M = LHSFnc(n, a, numGP, alpha)
+% Calculates the left-hand side of the fractional calculus derivation
+%==========================================================================
+% INPUT
+% n: Number of elements
+% a: Domain length
+% numGP: Number of Gauss Points
+% alpha: Exponent for Gauss-Jacobi quadrature
+%==========================================================================
+% OUPUT
+% M: Global system matrix
+%==========================================================================
 
-l = a / n;
+l = a / n; % Element length
 
 %alpha = -0.5, beta = 0
 [xj1, wj1] = gaussInt(numGP, alpha, 0);

@@ -1,5 +1,19 @@
 function bFrac = RHSFnc(n, a, c, p0, numGP, alpha)
+% Assembles the global stiffness matrix
+%==========================================================================
+% INPUT
+% n: Number of elements
+% a: Domain length
+% c: Differential equation constant
+% p0: Initial pressure
+% numGP: Number of Gauss points
+% alpha: Exponent for Gauss-Jacobi quadrature
+%==========================================================================
+% OUPUT
+% bFrac: Global right-hand side vector
+%==========================================================================
 
+% 
 [xj1, wj1] = gaussInt(numGP, alpha, 0);
 [xj2, wj2] = gaussInt(numGP, 0, alpha + 1);
 [xj3, wj3] = gaussInt(numGP, 0, alpha);
