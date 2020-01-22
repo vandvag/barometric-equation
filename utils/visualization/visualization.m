@@ -46,7 +46,7 @@ legend
 figure(2)
 hold on
 
-for i=n:n
+for i=1:n
     for j=1:size(matInt,1)
         % if j~=i
         plot(x, phis(i,:) .* matInt(j, :), 'DisplayName', ['\phi_{', num2str(i), '}', '[(A^*A)^{1/2}\phi_{e', num2str(j),'}]'])
@@ -57,16 +57,3 @@ title('Intergrands')
 xlabel('x')
 grid on
 legend
-
-%% Visualize G_{1/2}
-% G = @(x,y) (x/l) * log(tan(tau*(x+y)) / tan(tau*abs(x-y))) *exp(c*y);
-% G12_plot = zeros(length(x), 1);
-% 
-% figure(3)
-% for i=1:length(x)
-%     G12_plot(i) = G(a/6, x(i));
-% end
-% 
-% plot(x, G12_plot)
-% 
-% title('RHS')
