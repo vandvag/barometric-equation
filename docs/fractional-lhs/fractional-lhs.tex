@@ -1,20 +1,48 @@
-\documentclass{article}
-
+\documentclass[12pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
 \usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{braket}
+\usepackage{graphicx}
+\usepackage[usenames]{color}
+
+\theoremstyle{definition}
+\newtheorem{ass}{Assumption}[subsection]
+\newtheorem{theorem}[ass]{Theorem}
+\newtheorem{lemma}[ass]{Lemma}
+\newtheorem{prop}[ass]{Proposition}
+\newtheorem{definition}[ass]{Definition}
+\newtheorem{corollary}[ass]{Corollary}
+\newtheorem{exer}[ass]{Exercise}
+\newtheorem{ex}[ass]{Example}
+\newtheorem{prob}[ass]{Problem}
+\newtheorem{rem}[ass]{Remark}
+
+\definecolor{darkolivegreen}{rgb}{0.333333, 0.419608, 0.1843140}
+
+\usepackage[bookmarks=true,colorlinks=true,linkcolor=darkolivegreen,
+citecolor=darkolivegreen,urlcolor=darkolivegreen]{hyperref}
+
+\numberwithin{equation}{subsection}
+\parindent  0.mm 
+\allowdisplaybreaks
 
 \begin{document}
 
 The left-hand side of the equation is given by:
 
 \begin{equation} \label{eq:system_matrix}
-    M := \langle \phi_{ek} | [(A^*A)^{1/2}\phi_{em}] \rangle_{k,m=1,\dots,n}
+    M := \langle \phi_{ek} | [(A^*A)^{1/2} \, \phi_{em}] \rangle_{k,m=1,\dots,n}
 \end{equation}
 where:
 
 \begin{equation}
     \phi_{ek}(x) =
     \begin{cases}
-        \dfrac{x - (k-1)l}{l} \quad x \in [(k-1)l, kl] \\
+        \dfrac{x - (k-1)l}{l} \quad x \in [(k-1)l, kl] \\[10pt]
         \dfrac{(k+1)l - x}{l} \quad x \in [kl, (k+1)l]
     \end{cases}
 \end{equation}
@@ -38,24 +66,22 @@ for every $m \in \{1,\dots,n-1\}$
 Unpacking the equation (\ref{eq:system_matrix}):
 
 \begin{equation}
-    M_{km} = \int_0^a \phi_{ek} (x)[(A^*A)^{1/2}\phi_{em}](x)dx
+    M_{km} = \int\limits_0^a \phi_{ek} (x)[(A^*A)^{1/2}\phi_{em}](x)dx
 \end{equation}
 We take into account that this integrand has a singularity at $x=kl$ with $k \in \{1, \dots, n-1\}$. We perform the following split. Also from now on we set $[(A^*A)^{1/2}\phi_{em}](x) = f_m(x)$:
 
 \begin{equation*}
-    M_{km} = \int_0^{kl} \phi_{ek} (x)f_m(x)dx + \int_{kl}^a \phi_{ek} (x)f_m(x)dx
+    M_{km} = \int\limits_0^{kl} \phi_{ek} (x)f_m(x)dx + \int\limits_{kl}^a \phi_{ek} (x)f_m(x)dx
 \end{equation*}
-We then introduce the term $|x - kl|^{\alpha}$, in order to get rid of the singularity:
+We then introduce the term $|x - kl|^{\alpha}$, with $-1<\alpha<0$, in order to get rid of the singularity:
 
 \begin{equation*}
-    M_{km} = \int_0^{kl} \phi_{ek} (x)f_m(x)|x - kl|^{-\alpha}|x - kl|^{\alpha}dx + \int_{kl}^a \phi_{ek} (x)f_m(x)|x - kl|^{-\alpha}|x - kl|^{\alpha}dx
+    M_{km} = \int\limits_0^{kl} \phi_{ek} (x)f_m(x)|x - kl|^{-\alpha}|x - kl|^{\alpha}dx + \int\limits_{kl}^a \phi_{ek} (x)f_m(x)|x - kl|^{-\alpha}|x - kl|^{\alpha}dx
 \end{equation*}
-
-
-Setting $f_m(x) |x-kl|^{-\alpha} = g_m(x)$, with $-1<\alpha<0$, we can write:
+Setting $f_m(x) |x-kl|^{-\alpha} = g_m(x)$ we can write:
 
 \begin{align*}
-    M_{km} &= \int_0^{kl} \phi_{ek} (x)g_m(x)(kl-x)^{\alpha}dx + \int_{kl}^a \phi_{ek} (x)g_m(x)(x - kl)^{\alpha}dx\\
+    M_{km} &= \int\limits_0^{kl} \phi_{ek} (x)g_m(x)(kl-x)^{\alpha}dx + \int\limits_{kl}^a \phi_{ek} (x)g_m(x)(x - kl)^{\alpha}dx\\
     &= \frac{kl}{2}\int\limits_{-1}^1 \phi_{ek}\left(\frac{kl}{2}\xi + \frac{kl}{2}\right)g_m\left(\frac{kl}{2}\xi + \frac{kl}{2}\right) \left(\frac{kl}{2}\right)^{\alpha}(1-\xi)^{\alpha}d\xi + \\
     &+ \frac{a-kl}{2} \int\limits_{-1}^1\phi_{ek}\left(\frac{a-kl}{2}\xi + \frac{a+kl}{2}\right)g_m\left(\frac{a-kl}{2}\xi + \frac{a+kl}{2}\right) \left(\frac{a-kl}{2}\right)^{\alpha}(1+\xi)^{\alpha}d\xi \\
     &= \left(\frac{kl}{2}\right)^{1+\alpha} \int\limits_{-1}^{1}\phi_{ek}\left(\frac{kl}{2}\xi + \frac{kl}{2}\right)g_m\left(\frac{kl}{2}\xi + \frac{kl}{2}\right)(1-\xi)^{\alpha}d\xi + \\
@@ -79,18 +105,31 @@ Performing a Gauss-Jacobi integration scheme, we get:
 \begin{equation}
     M_{km} \approx \left(\frac{kl}{2}\right)^{1+\alpha} \sum_{i}\tilde g_{1m}(\xi_i) w_i^{(\alpha,0)}+ \left(\frac{a-kl}{2}\right)^{1 + \alpha} \sum_i\tilde g_{1m}(\xi_i) w_i^{(0,\alpha)}
 \end{equation}
+where $w_i^{(\alpha,0)}$ means that we use the Gauss-Jacobi integration nodes and weights for $\alpha=-0.5 \, , \beta=0$ and so on.
 
 \subsection*{Special case k=n}
 
 For the case that $k=n$, we follow the same procedure as above:
 
 \begin{equation}
-    M_{nn} \approx \left(\frac{a}{2}\right)^{1+\alpha} \sum_i \tilde g(\xi) w_i^{(\alpha, 0)}
+  M_{nn} = \int\limits_{0}^{a} \phi_{en}(x) f_{n}(x) (a-x)^{\alpha} (a-x)^{-\alpha}dx
 \end{equation}
-where:
+We set $f_{n}(x) (a-x)^{-\alpha} = g_n(x)$, so:
+
+\begin{align*}
+    M_{nn} &= \int\limits_{0}^{a} \phi_{en}(x) g_n(x)(a-x)^{\alpha}dx \\
+    &= \frac{a}{2} \int\limits_{-1}^{1} \phi_{en} \left(\frac{a}{2}\xi + \frac{a}{2}\right) g_n \left(\frac{a}{2}\xi + \frac{a}{2}\right) \left(\frac{a}{2}\right)^{\alpha} (1-\xi)^{\alpha}d\xi \\
+    &=\left(\frac{a}{2}\right)^{1+\alpha} \int\limits_{-1}^{1}\phi_{en} \left(\frac{a}{2}\xi + \frac{a}{2}\right) g_n \left(\frac{a}{2}\xi + \frac{a}{2}\right) (1-\xi)^{\alpha}d\xi
+\end{align*}
+If we substitute:
 
 \begin{equation}
-    \tilde g(\xi) = \phi_{en}\left(\frac{a}{2}\xi + \frac{a}{2}\right)f\left(\frac{a}{2}\xi + \frac{a}{2}\right)(1-\xi)^{-\alpha}
+    \tilde g_n(\xi) = \phi_{en}\left(\frac{a}{2}\xi + \frac{a}{2}\right)g_n\left(\frac{a}{2}\xi + \frac{a}{2}\right)
+\end{equation}
+we can approximate the integral above as:
+
+\begin{equation}
+    M_{nn} \approx \left(\frac{a}{2}\right)^{1+\alpha} \sum_i \tilde g(\xi) w_i^{(\alpha, 0)}
 \end{equation}
 
 

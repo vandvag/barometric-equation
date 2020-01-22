@@ -1,0 +1,128 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{braket}
+\usepackage{graphicx}
+\usepackage[usenames]{color}
+
+\theoremstyle{definition}
+\newtheorem{ass}{Assumption}[subsection]
+\newtheorem{theorem}[ass]{Theorem}
+\newtheorem{lemma}[ass]{Lemma}
+\newtheorem{prop}[ass]{Proposition}
+\newtheorem{definition}[ass]{Definition}
+\newtheorem{corollary}[ass]{Corollary}
+\newtheorem{exer}[ass]{Exercise}
+\newtheorem{ex}[ass]{Example}
+\newtheorem{prob}[ass]{Problem}
+\newtheorem{rem}[ass]{Remark}
+
+\definecolor{darkolivegreen}{rgb}{0.333333, 0.419608, 0.1843140}
+
+\usepackage[bookmarks=true,colorlinks=true,linkcolor=darkolivegreen,
+citecolor=darkolivegreen,urlcolor=darkolivegreen]{hyperref}
+
+\numberwithin{equation}{subsection}
+\parindent  0.mm 
+\allowdisplaybreaks
+
+\newcommand{\dd}{\text{d}}
+\begin{document}
+
+\section*{Calculation for right-hand side}
+
+The right-hand size of the equation is described by the equation:
+
+\begin{equation} \label{eq:rhs_k}
+    X_{k} := \langle \phi_{ek} | (V^* \, g) \rangle = \int\limits_0^a \phi_{ek}(x)(V^* \, g) (x) \dd x 
+\end{equation}
+for $k \in \{1, \dots, n\}$ where:
+
+\begin{equation}
+    \phi_{ek}(x) =
+    \begin{cases}
+        \dfrac{x - (k-1)l}{l} \quad x \in [(k-1)l, kl] \\[10pt]
+        \dfrac{(k+1)l - x}{l} \quad x \in [kl, (k+1)l]
+    \end{cases}
+\end{equation}
+for $k \in \{1, \dots, n-1\}$ and for $k=n$:
+
+\begin{equation}
+    \phi_{en}(x) =
+    \dfrac{x - (n-1)l}{l} \quad x \in [(n-1)l, nl]
+\end{equation}
+Furthermore we have:
+
+\begin{equation}
+    (V^* \, g)(x) = p_0 c^2 \int\limits_0^a G_{\frac{1}{2}}(x,y)e^{cy}\dd y
+\end{equation}
+where the fractional derivative $G_{\frac{1}{2}}(x,y)$ is given by:
+
+\begin{equation}
+    G_{\frac{1}{2}}(x,y) = \dfrac{1}{\pi} \ln \left[\dfrac{\tan\left(\dfrac{\pi (x+y)}{4a}\right)}{\tan\left(\dfrac{\pi |x-y|}{4a}\right)}\right]
+\end{equation}
+Plugging all the results in \ref{eq:rhs_k} yields:
+
+\begin{align}
+    X_{k} &= p_0 c^2 \int\limits_0^a \phi_{ek}(x)\int\limits_0^a G_{\frac{1}{2}}(x,y)e^{cy}\dd y\dd x \\
+    &= p_0 c^2 \int\limits_0^a \int\limits_0^a \phi_{ek}(x)G_{\frac{1}{2}}(x,y)e^{cy}\dd y\dd x
+\end{align}
+We observe that $X_k$ becomes singular for $x=y$. In order to eliminate the singularity, we will perform a Gauss-Jacobi integration scheme. Thus we introduce the term:
+
+\begin{equation}
+    X_{k} = p_0 c^2 \int\limits_0^a \int\limits_0^a \phi_{ek}(x) f(x, y) |x-y|^{-\alpha} |x-y|^{\alpha}\dd y\dd x
+\end{equation}
+with $-1<\alpha<0$ and:
+\begin{equation}
+    f(x,y) = G_{\frac{1}{2}}(x,y) e^{cy}
+\end{equation}
+\begin{equation}
+    g(x,y) = f(x,y) |x-y|^{-\alpha}
+\end{equation}
+Spliting the integral at the critical point yields:
+
+\begin{align*}
+    X_{k} &= p_0 c^2 \int\limits_0^a \left( \int\limits_0^x \phi_{ek}(x) g(x,y) (x-y)^{\alpha}\dd y + \int\limits_x^a \phi_{ek}(x) g(x,y) (y-x)^{\alpha}\dd y\right) \dd x \\
+    &= p_0 c^2 \int\limits_0^a \frac{x}{2} \int\limits_{-1}^{1}\phi_{ek}(x) g\left(x, \frac{x}{2}(1+ \xi) \right)\left(\frac{x}{2}\right)^{\alpha} (1-\xi)^{\alpha} \dd \xi \dd x \\
+    &+ p_0 c^2 \int\limits_0^a \frac{a - x}{2} \int\limits_{-1}^{1}\phi_{ek}(x) g\left(x, \frac{a-x}{2}\xi + \frac{a+x}{2}\right)\left(\frac{a-x}{2}\right)^{\alpha} (1+\xi)^{\alpha} \dd \xi \dd x \\
+    &= p_0 c^2 \int\limits_0^a \left(\frac{x}{2}\right)^{1+ \alpha} \int\limits_{-1}^{1}\phi_{ek}(x) g\left(x, \frac{x}{2}(1+ \xi) \right) (1-\xi)^{\alpha} \dd \xi \dd x \\
+    &+ p_0 c^2 \int\limits_0^a \left(\frac{a-x}{2}\right)^{1+\alpha} \int\limits_{-1}^{1}\phi_{ek}(x) g\left(x, \frac{a-x}{2}\xi + \frac{a+x}{2}\right) (1+\xi)^{\alpha} \dd \xi \dd x \\
+    &= p_0 c^2 \int\limits_0^a \int\limits_{-1}^{1}\left(\frac{x}{2}\right)^{1+ \alpha} \phi_{ek}(x) g\left(x, \frac{x}{2}(1+ \xi) \right) (1-\xi)^{\alpha} \dd \xi \dd x \\
+    &+ p_0 c^2 \int\limits_0^a \int\limits_{-1}^{1}\left(\frac{a-x}{2}\right)^{1+\alpha} \phi_{ek}(x) g\left(x, \frac{a-x}{2}\xi + \frac{a+x}{2}\right) (1+\xi)^{\alpha} \dd \xi \dd x \\
+    &= p_0 c^2 \frac{a}{2} \left[ \int\limits_{-1}^1 \int\limits_{-1}^{1} \left(\frac{a}{4}\right)^{1+ \alpha} (1+\eta)^{1+\alpha} \phi_{ek}\left(\frac{a}{2}(1+\eta)\right) g\left(\frac{a}{2}(1+\eta), \frac{x}{2}(1+ \xi) \right) (1-\xi)^{\alpha} \dd \xi \dd \eta \right.\\
+    &+ \left. \int\limits_{-1}^1 \int\limits_{-1}^{1} \left(\frac{a}{4}\right)^{1+ \alpha} (1-\eta)^{1+\alpha} \phi_{ek}\left(\frac{a}{2}(1+\eta)\right) g\left(\frac{a}{2}(1+\eta), \frac{a}{4}(1-\eta)\xi + \frac{a}{4}(3+\eta)\right) (1+\xi)^{\alpha} \dd \xi \dd \eta \right]\\
+\end{align*}
+We substitute:
+
+\begin{align}
+    \tilde g_1 (\xi, \eta) &= \phi_{ek}\left(\frac{a}{2}(1+\eta)\right) g\left(\frac{a}{2}(1+\eta), \frac{x}{2}(1+ \xi) \right) \\
+    \tilde g_2 (\xi, \eta) &= \phi_{ek}\left(\frac{a}{2}(1+\eta)\right) g\left(\frac{a}{2}(1+\eta), \frac{a}{4}(1-\eta)\xi + \frac{a}{4}(3+\eta)\right)
+\end{align}
+meaning:
+
+\begin{align*}
+    X_{k} &= 2 p_0 c^2 \left(\frac{a}{4}\right)^{2+\alpha} \int\limits_{-1}^1\int\limits_{-1}^1 \tilde g_1(\xi, \eta) (1-\xi)^{\alpha} (1 + \eta)^{1+\alpha}\dd \xi \dd \eta \\
+    &+ 2 p_0 c^2 \left(\frac{a}{4}\right)^{2+\alpha} \int\limits_{-1}^1\int\limits_{-1}^1 \tilde g_2(\xi, \eta) (1+\xi)^{\alpha} (1 - \eta)^{1+\alpha}\dd \xi \dd \eta
+\end{align*}
+Performing the Gauss-Jacobi quadrature yields:
+
+\begin{align}
+\begin{split}
+    X_k &\approx 2 p_0 c^2 \left(\frac{a}{4}\right)^{2+\alpha} \sum_i \sum_j \tilde g_1(\xi_i, \eta_j) w_i^{(\alpha,0)}w_j^{(0,1+\alpha)}\\
+    &+ 2 p_0 c^2 \left(\frac{a}{4}\right)^{2+\alpha} \sum_i \sum_j \tilde g_2(\xi_i, \eta_j) w_i^{(0,\alpha)}w_j^{(1+\alpha, 0)}
+\end{split}
+\end{align}
+
+
+
+
+
+
+
+
+
+\end{document}
