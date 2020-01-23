@@ -76,3 +76,9 @@ end
 
 legend show
 grid on
+
+%%
+% Error plot
+
+plot_errors(nodalCoords, pressureAnalytical, pressureForward,...
+                     pressureBackward, pressureFEM, pressureFrac)
