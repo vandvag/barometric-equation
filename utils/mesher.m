@@ -9,7 +9,7 @@ function [nodalCoords, LocationMatrix] = mesher(l,nElem)
 %   LocationMatrix: array  ... Array containing the node IDs of each element
 %==========================================================================
 % Initialize Arrays
-nodalCoords = zeros(1,nElem + 1);
+nodalCoords = zeros(nElem + 1, 1);
 le = l / nElem; % Element length
 
 for el=1:1:nElem+1
