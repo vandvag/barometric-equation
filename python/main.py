@@ -1,5 +1,9 @@
-from Input import Input
-# 1. Read input
+import yaml
+import input_output as io
 
-readInput = Input()
-params = readInput.getInput()
+# 1. Read input
+input_filename = "input.yml"
+
+data = io.readInputFile(input_filename, True)
+
+io.storeInputFile(data, "output.yml")
