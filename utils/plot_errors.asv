@@ -29,7 +29,7 @@ end
 
 title('Absolute error between methods')
 xlabel('Altitude (m)')
-ylabel('log(error)(-)')
+ylabel('Error (-)')
 legend show
 grid on
 end
