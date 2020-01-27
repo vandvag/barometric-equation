@@ -11,6 +11,9 @@ if ~exist('out', 'dir')
     mkdir('out')
 end
 
+% Store results prompt
+storeResFlag = input('Do you want to store the results?(y/n) ', 's');
+
 % Define element parameters
 n = 5;
 a = 1;
@@ -34,6 +37,14 @@ for i=1:1
     hold on
     subplot(1,2,2)
     plot(x, matInt(:,i), 'DisplayName', ['[(A^*A)^{1/2}\phi_{e', num2str(i),'}]'])
+    phi_data = [x', phis(:, i)];
+    matInt_data = [x', matInt(:, i)];
+
+    % Store data
+    if storeResFlag == 'y' || storeResFlag == 'Y'
+        writematrix(phi_data, ['out/phi_out_', num2str(i), '.dat'], 'Delimiter', 'tab');
+        writematrix(matInt_data,['out/matInt_out_', num2str(i), '.dat'], 'Delimiter', 'tab');
+    end
 end
 subplot(1,2,1)
 title('Shape Functions')
@@ -49,12 +60,11 @@ hold off
 legend
 
 % Output data
-phi_data = [x', phis(:, 1)];
-matInt_data = [x', matInt(:, 1)];
 
-dlmwrite('phi_out.csv', phi_data, 'delimiter', '\t');
-dlmwrite('matInt_out.csv', matInt_data, 'delimiter', '\t');
 
+% Store results
+
+disp('Process ended!')
 % 
 % figure(2)
 % hold on
