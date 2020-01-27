@@ -23,26 +23,21 @@ l = a / n; % Element length
 M = zeros(n,n);
 
 % This only works up to k=n-1
-for k=1:(n-1)
+for k=1:n
     for m=k:n % Calculate only the upper half of M (since M symmetric)
         % Gauss Loop
         for gx=1:numGP
-            x1 = k*l / 2 * xj1(gx) + k*l/2;
-            x2 = (a-k*l)/2 * xj2(gx) + (a + k*l) / 2;
+            x1 = l / 2 * xj1(gx) + (2*k-1) / 2 * l;
+            x2 = l / 2 * xj2(gx) + (2*k+1) / 2 * l;
 
             % first part of the sum
-            M(k,m) = M(k,m) + (k*l/2)^(1+alpha) * wj1(gx) * matInts(x1, m, n, a) * shapeFncs(x1, k, n, a) * (abs(x1-k*l))^(-alpha);
+            M(k,m) = M(k,m) + (l/2)^(1+alpha) * wj1(gx) * matInts(x1, m, n, a) * shapeFncs(x1, k, n, a) * (abs(x1-k*l))^(-alpha);
             % second part of the sum
-            M(k,m) = M(k,m) + ((a-k*l)/2)^(1+alpha) * wj2(gx) * matInts(x2, m, n, a) * shapeFncs(x2, k, n, a) * (abs(x2-k*l))^(-alpha);
+            M(k,m) = M(k,m) + (l/2)^(1+alpha) * wj2(gx) * matInts(x2, m, n, a) * shapeFncs(x2, k, n, a) * (abs(x2-k*l))^(-alpha);
         end
     end
 end
 
-% Special case for k=n
-for gx=1:numGP
-    x = a / 2 * xj1(gx) + a / 2;
-    M(n,n) = M(n,n) + (a/2)^(1+alpha) * wj1(gx) * shapeFncs(x, n, n, a) * matInts(x, n, n, a)  * (a - x)^(-alpha);
-end
 
 % Make M symmetric
 for i=1:n

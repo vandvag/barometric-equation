@@ -52,7 +52,7 @@ pressureFrac = fractional(C, initialPressure, domainLength, numElements, nodalCo
 %%
 % Plot Results
 
-figure(1)
+figure()
 title('Solution of Barometric Equation')
 xlabel('Altitude h (m)')
 ylabel('Pressure P (bar)')
