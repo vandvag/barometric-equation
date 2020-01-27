@@ -6,6 +6,11 @@ close all;
 currentFolder = pwd;
 inputFilename = 'input.txt';
 
+% Check if out directory exists
+if ~exist('out', 'dir')
+    mkdir('out')
+end
+
 %%
 % Read the input from the input file
 [maxAltitude, ...
@@ -96,12 +101,12 @@ if storeResFlag == 'y' || storeResFlag == 'Y'
     % Store pressures
     res = [nodalCoords, pressureAnalytical, pressureForward, pressureBackward, pressureFEM, pressureFrac];
     labels = ["Coords", "Analytical", "Forward", "Backward", "FEM", "Frac"];
-    writematrix([labels; res],'pressure.dat', 'Delimiter', 'tab');
+    writematrix([labels; res],'out/pressure.dat', 'Delimiter', 'tab');
 
     % Store erorrs
     res = [nodalCoords, errForward, errBackward, errFEM, errFrac];
     labels = ["Coords", "err_forward", "err_backward", "err_FEM", "err_frac"];
-    writematrix([labels; res],'error.dat', 'Delimiter', 'tab');
+    writematrix([labels; res],'out/error.dat', 'Delimiter', 'tab');
 else
     disp('Process finished!')
 end

@@ -6,16 +6,17 @@ clear all
 close all
 clc
 
+pwd
 % Define element parameters
-n = 4;
-a = n;
+n = 5;
+a = 1;
 l = a / n;
 tau = pi / (4*a);
 c = 1;
 p0 = 1;
 
 % Discretization
-x = linspace(0,a,1000);
+x = linspace(0,a,300);
 
 % Get shape functions at each point
 phis = shapeFunctions(n, a, x)';

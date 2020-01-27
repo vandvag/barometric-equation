@@ -2,6 +2,9 @@
 
 The MATLAB code provided in this repository tries to solve the barometric pressure differential equation
 
+## Important!
+
+The current working directory (```pwd``` in MATLAB) should be the same as the one that ```main.m``` is in (root directory of the project)
 ## Input
 
 The input of the problem is given via the ```input.txt``` file. Change the values there.
