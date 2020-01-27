@@ -1,13 +1,13 @@
 function g = G12(x, y, a)
 % Evaluates the derivative G_{1/2} at points x, y
 %===============================================================================
-% INPUT:
-% x: Evaluation point
-% y: Evaluation point
-% a: Domain length
+% INPUT
+%   x: Evaluation point
+%   y: Evaluation point
+%   a: Domain length
 %===============================================================================
-% OUTPUT:
-% g: Evaluation of the derivatve at points x, y
+% OUTPUT
+%   g: Evaluation of the derivatve at points x, y
 %===============================================================================
 
 tau = pi / (4*a);

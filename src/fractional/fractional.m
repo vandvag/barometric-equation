@@ -2,14 +2,15 @@ function pFrac = fractional(C, initialPressure, domainLength, numElements, nodal
 %==========================================================================
 % Calculates the solution of the ODE via the fractional calculus method
 %==========================================================================
-% INPUT:
-% C: C = Mg/RT (1/m)
-% initialPressure: Initial pressure (bar)
-% domainLength: Lenght of the domain (m)
-% numElements: Number of elements used (-)
-% nodalCoords: Coordinates of the nodes
-% OUPUT:
-% pFrac: pressure obtained via the fractional calculus approach
+% INPUT
+%   C: C = Mg/RT (1/m)
+%   initialPressure: Initial pressure (bar)
+%   domainLength: Lenght of the domain (m)
+%   numElements: Number of elements used (-)
+%   nodalCoords: Coordinates of the nodes
+%==========================================================================
+% OUPUT
+%   pFrac: pressure obtained via the fractional calculus approach
 %==========================================================================
 
 

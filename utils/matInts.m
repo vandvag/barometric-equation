@@ -1,14 +1,14 @@
 function matInt = matInts(y, m, n, a)
 % Evaluates the m-th [A*A]phi term at given point y
 %===============================================================================
-% INPUT:
-% y: Evaluation point
-% m: m-th shape function to be evaluated
-% n: Number of shape functions defined by the discretization
-% a: Domain length
+% INPUT
+%   y: Evaluation point
+%   m: m-th shape function to be evaluated
+%   n: Number of shape functions defined by the discretization
+%   a: Domain length
 %===============================================================================
-% OUTPUT:
-% matInt: Evaluation of the shape function at the point y
+% OUTPUT
+%   matInt: Evaluation of the shape function at the point y
 %===============================================================================
 
 l = a / n;

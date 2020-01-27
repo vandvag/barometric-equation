@@ -3,7 +3,18 @@ function plot_errors(nodalCoords, ...
                      errBackward,...
                      errFEM, ...
                      errFrac)
-                 
+% Plots the relative error at each node
+%==========================================================================
+% INPUT
+%   nodalCoords: Coordinates of spatial nodes
+%   errForward: Relative error at each node (forward difference method)
+%   errBackward: Relative Error at each node (backward difference method)
+%   errFEM: Relative error at each node (FEM difference method)
+%   errFrac: Relative error at each node (fractional derivation)
+%   logFlag: Choose between semilogy plot or linear plot (boolean)
+%==========================================================================
+% OUTPUT
+%==========================================================================        
 figure()
 logFlag = true;
 

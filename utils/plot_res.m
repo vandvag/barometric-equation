@@ -5,6 +5,28 @@ function plot_res(nodalCoords,...
                   pressureFEM, ...
                   pressureFrac, ...
                   resultsToPlot)
+% Plot the solution of the problem for each node
+%==========================================================================
+%INPUT
+%   nodalCoords: Coordinates of spatial nodes
+%   pressureAnalytical: Pressure at each node (analytical)
+%   pressureForward: Pressure at each node (forward difference method)
+%   pressureBackward: Pressure at each node (backward difference method)
+%   pressureFEM: Pressure at each node (FEM difference method)
+%   pressureFrac: Pressure at each node (fractional derivation)
+%   resultsToPlot: Array containing the ID of each method
+%       (1-> Analytical)
+%       (2-> Forward Difference)
+%       (3-> Backward Difference)
+%       (4-> FEM)
+%       (5-> Fractional Calculus)
+%==========================================================================
+% OUTPUT
+%   errForward: Relative error at each node (forward difference method)
+%   errBackward: Relative Error at each node (backward difference method)
+%   errFEM: Relative error at each node (FEM difference method)
+%   errFrac: Relative error at each node (fractional derivation)
+%==========================================================================                 
  
                   
 figure()

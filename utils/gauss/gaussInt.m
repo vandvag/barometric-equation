@@ -4,14 +4,14 @@ function [nodesGauss, weightsGauss] = gaussInt(numGaussPoints, alpha, beta)
 % f(x) * (1 - x) ^ alpha * (1 + x) ^ beta
 % https://www.cs.purdue.edu/archives/2002/wxg/codes/OPQ.html
 %===============================================================================
-% INPUT:
-% numGaussPoints: number of Gauss Points (nodes)
-% alpha: alpha parameter
-% beta: beta parameter
+% INPUT
+%   numGaussPoints: number of Gauss Points (nodes)
+%   alpha: alpha parameter
+%   beta: beta parameter
 %===============================================================================
-% OUTPUT:
-% nodesGauss: nodes of Gauss-Jacobi quadrature
-% weightsGauss: weights of Gauss-Jacobi quadrature
+% OUTPUT
+%   nodesGauss: nodes of Gauss-Jacobi quadrature
+%   weightsGauss: weights of Gauss-Jacobi quadrature
 %===============================================================================
 
 r = r_jacobi(numGaussPoints, alpha, beta); % Recurence coefficients due to Gautschi

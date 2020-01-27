@@ -34,4 +34,7 @@ The main function ```main.m``` calls the methods found in the ```src``` folder.
 - ```shapeFncs.m```: Evaluates the k-th shape function at a point x, as they are defined in the report.
 - ```mesher.m```: Utility for providing a discretization of the domain
 - ```visualization```: Utility for providing plots of the shape functions and the matrix integrands, as defined in the report. Main method is the ```visualization.m```
-- ```gauss```: Provides the nodes and weights for the Gauss-Jacobi integration scheme. Main method is the ````gaussInt.m```
+- ```gauss```: Provides the nodes and weights for the Gauss-Jacobi integration scheme. Main method is the ```gaussInt.m```
+- ```plot_res.m```: Provides plots of the solution for the selected methods
+- ```find_error.m```: Calculates the relative error of each method compared to the analytical solution
+- ```plot_errros.m```: Provides plots for the relative error for each method

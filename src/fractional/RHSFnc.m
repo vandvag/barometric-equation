@@ -2,15 +2,15 @@ function bFrac = RHSFnc(n, a, c, p0, numGP, alpha)
 % Assembles the global stiffness matrix
 %==========================================================================
 % INPUT
-% n: Number of elements
-% a: Domain length
-% c: Differential equation constant
-% p0: Initial pressure
-% numGP: Number of Gauss points
-% alpha: Exponent for Gauss-Jacobi quadrature
+%   n: Number of elements
+%   a: Domain length
+%   c: Differential equation constant
+%   p0: Initial pressure
+%   numGP: Number of Gauss points
+%   alpha: Exponent for Gauss-Jacobi quadrature
 %==========================================================================
 % OUPUT
-% bFrac: Global right-hand side vector
+%   bFrac: Global right-hand side vector
 %==========================================================================
 
 % Gauss-Jacobi integration nodes/weights
@@ -34,16 +34,11 @@ for k=1:n
 
             % First sum
 
-            % From report
-            % bFrac(k) = bFrac(k) + 2 * p0 * c^2 * (a/4)^(2+alpha) * shapeFncs(x1, k, n, a) * G12(x1,y1, a) * exp(c*y1) * (abs(x1 - y1))^(-alpha) * wj1(gx) * wj2(gy);
-            % Matthias
+            % Transformation proposed by Matthias Hinze
             bFrac(k) = bFrac(k) - 2 * p0 * c^2 / (1+c*a) * (a/4)^(2+alpha) * shapeFncs(x1, k, n, a) * G12(x1,y1, a) * exp(c*y1) * (1+c*(y1-a)) * (abs(x1 - y1))^(-alpha) * wj1(gx) * wj2(gy);
 
             % Second sum
-
-            % From report
-            % bFrac(k) = bFrac(k) + 2 * p0 * c^2 * (a/4)^(2+alpha) * shapeFncs(x2, k, n, a) * G12(x2,y2, a) * exp(c*y2) * (abs(x2 - y2))^(-alpha) * wj3(gx) * wj4(gy);
-            % Matthias
+            % Transformation proposed by Matthias Hinze
             bFrac(k) = bFrac(k) - 2 * p0 * c^2 / (1+c*a) * (a/4)^(2+alpha) * shapeFncs(x2, k, n, a) * G12(x2,y2, a) * exp(c*y2) * (1+c*(y2-a)) * (abs(x2 - y2))^(-alpha) * wj3(gx) * wj4(gy);
         end
     end
