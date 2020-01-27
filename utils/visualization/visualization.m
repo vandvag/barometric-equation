@@ -28,24 +28,24 @@ x = linspace(0,a,300);
 % Get shape functions at each point
 phis = shapeFunctions(n, a, x)';
 matInt = matrixIntegrands(n, a, x)';
+phi_data = x';
+phi_legend = [];
+matInt_data = x';
+matInt_legend = [];
 
-figure(1)
-for i=1:1
+figure()
+for i=1:n
     hold on
     subplot(1,2,1)
     plot(x, phis(:,i), 'DisplayName', ['\phi_{', num2str(i), '}'])
     hold on
     subplot(1,2,2)
     plot(x, matInt(:,i), 'DisplayName', ['[(A^*A)^{1/2}\phi_{e', num2str(i),'}]'])
-    phi_data = [x', phis(:, i)];
-    matInt_data = [x', matInt(:, i)];
 
-    % Store data
-    if storeResFlag == 'y' || storeResFlag == 'Y'
-        writematrix(phi_data, ['out/phi_out_', num2str(i), '.dat'], 'Delimiter', 'tab');
-        writematrix(matInt_data,['out/matInt_out_', num2str(i), '.dat'], 'Delimiter', 'tab');
-    end
+    phi_data = [phi_data, phis(:, i)];
+    matInt_data = [matInt_data, matInt(:, i)];
 end
+
 subplot(1,2,1)
 title('Shape Functions')
 xlabel('x')
@@ -59,12 +59,13 @@ xlabel('x')
 hold off
 legend
 
-% Output data
-
-
-% Store results
-
+% Store data
+if storeResFlag == 'y' || storeResFlag == 'Y'
+    writematrix(phi_data, 'out/phi_out.dat', 'Delimiter', 'tab');
+    writematrix(matInt_data,'out/matInt_out.dat', 'Delimiter', 'tab');
+end
 disp('Process ended!')
+
 % 
 % figure(2)
 % hold on
