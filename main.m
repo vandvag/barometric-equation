@@ -5,6 +5,7 @@ close all;
 % Preliminaries
 currentFolder = pwd;
 inputFilename = 'input.txt';
+storeResFlag = input('Do you want to store the results?(y/n) ', 's');
 
 % Check if out directory exists
 if ~exist('out', 'dir')
@@ -87,7 +88,6 @@ end
 
 %%
 % Store results
-storeResFlag = input('Do you want to store the results?(y/n) ', 's');
 
 if storeResFlag == 'y' || storeResFlag == 'Y'
     disp('Storing results...')
@@ -100,6 +100,6 @@ if storeResFlag == 'y' || storeResFlag == 'Y'
     res = [nodalCoords, errForward, errBackward, errFEM, errFrac];
     labels = ["Coords", "err_forward", "err_backward", "err_FEM", "err_frac"];
     writematrix([labels; res],'out/error.dat', 'Delimiter', 'tab');
-else
-    disp('Process finished!')
 end
+    
+disp('Process finished!')
