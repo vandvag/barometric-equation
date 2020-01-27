@@ -82,17 +82,26 @@ grid on
 %%
 % Error plot
 
-plot_errors(nodalCoords, pressureAnalytical, pressureForward,...
-                     pressureBackward, pressureFEM, pressureFrac)
+[errForward,...
+ errBackward, ...
+ errFEM, ...
+ errFrac] = plot_errors(nodalCoords, pressureAnalytical, pressureForward,...
+                        pressureBackward, pressureFEM, pressureFrac)
 
 % Store results
 storeResFlag = input('Do you want to store the results?(y/n) ', 's');
 
 if storeResFlag == 'y' || storeResFlag == 'Y'
     disp('Storing results...')
+    % Store pressures
     res = [nodalCoords, pressureAnalytical, pressureForward, pressureBackward, pressureFEM, pressureFrac];
     labels = ["Coords", "Analytical", "Forward", "Backward", "FEM", "Frac"];
     writematrix([labels; res],'pressure.dat', 'Delimiter', 'tab');
+
+    % Store erorrs
+    res = [errForward, errBackward, errFEM, errFrac];
+    labels = ["Coords", "err_forward", "err_backward", "err_FEM", "err_frac"];
+    writematrix([labels; res],'error.dat', 'Delimiter', 'tab');
 else
     disp('Process finished!')
 end
