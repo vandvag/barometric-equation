@@ -6,7 +6,11 @@ clear all
 close all
 clc
 
-pwd
+% Check if out directory exists
+if ~exist('out', 'dir')
+    mkdir('out')
+end
+
 % Define element parameters
 n = 5;
 a = 1;
