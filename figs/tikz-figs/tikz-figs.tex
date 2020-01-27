@@ -80,10 +80,33 @@
         FEM,
         Fractional}
 \end{axis}
+
 \end{tikzpicture}
 
 
-
+%==========================================================
+% Error Plot
+%==========================================================
+\begin{tikzpicture}
+    \begin{semilogyaxis}[
+        xlabel={Altitude ($m$)},
+        ylabel={Pressure (bar)},
+        title={Relative error},
+        grid=both
+    ]
+        \addplot table [mark=none, x index=0, y index=1] {data/error.dat};
+        \addplot table [mark=none, x index=0, y index=2] {data/error.dat};
+        \addplot table [mark=none, x index=0, y index=3] {data/error.dat};
+        \addplot table [mark=none, x index=0, y index=4] {data/error.dat};
+        \legend{
+            Analytical,
+            Forward,
+            Backward,
+            FEM,
+            Fractional}
+    \end{semilogyaxis}
+    
+    \end{tikzpicture}
 
 
 
