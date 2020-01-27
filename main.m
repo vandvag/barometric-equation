@@ -2,6 +2,8 @@ clear all;
 clc;
 close all;
 
+% Preliminaries
+currentFolder = pwd;
 inputFilename = 'input.txt';
 
 %%
@@ -82,3 +84,15 @@ grid on
 
 plot_errors(nodalCoords, pressureAnalytical, pressureForward,...
                      pressureBackward, pressureFEM, pressureFrac)
+
+% Store results
+storeResFlag = input('Do you want to store the results?(y/n) ', 's');
+
+if storeResFlag == 'y' || storeResFlag == 'Y'
+    disp('Storing results...')
+    res = [nodalCoords, pressureAnalytical, pressureForward, pressureBackward, pressureFEM, pressureFrac];
+    labels = ["Coords", "Analytical", "Forward", "Backward", "FEM", "Frac"];
+    writematrix([labels; res],'pressure.dat', 'Delimiter', 'tab');
+else
+    disp('Process finished!')
+end
