@@ -98,6 +98,22 @@ for i=1:50
     end
 end
 
+%% Plot G_tilde
+
+x = linspace(0,a,300)';
+G_tilde = zeros(300,1);
+
+for i=1:300
+    G_tilde(i) = - phis(i, 1) * G12(x(i), x(i)/10, a) * p0*c^2/(1+c*a)*exp(c*x(i)/10)*(1+c*(x(i)/10-a));
+    G_tilde_smooth(i) = - phis(i, 1) * G12(x(i), x(i)/10, a) * p0*c^2/(1+c*a)*exp(c*x(i)/10)*(1+c*(x(i)/10-a))*(9*x(i)/10)^(-alpha);
+end
+
+figure()
+plot(x, G_tilde)
+hold on 
+plot(x, G_tilde_smooth)
+hold off
+
 % G_12 = zeros(num_points, num_points);
 % for i=1:num_points
 %     for j=1:num_points
