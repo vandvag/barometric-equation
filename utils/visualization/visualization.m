@@ -86,9 +86,18 @@ grid on
 legend
 
 % % PLOT G1/2
-x = linspace(0,a,50)'';
-y = linspace(0,a,50)'';
-G_12 = zeros(50*50, 1);
+x = linspace(0,a,50)';
+y = linspace(0,a,50)';
+G12_points = zeros(50*50, 3);
+counter = 0;
+for i=1:50
+    for j=1:50
+        counter = counter + 1;
+        G_12 = G12(x(i), y(j), a);
+        G12_points(counter, :) = [x(i), y(j), G_12];
+    end
+end
+
 % G_12 = zeros(num_points, num_points);
 % for i=1:num_points
 %     for j=1:num_points
@@ -103,5 +112,6 @@ if storeResFlag == 'y' || storeResFlag == 'Y'
     writematrix(phi_data, 'out/phi_out.dat', 'Delimiter', 'tab');
     writematrix(matInt_data,'out/matInt_out.dat', 'Delimiter', 'tab');
     writematrix(smoothed_M, 'out/smoothed_M.dat', 'Delimiter', 'tab');
+    writematrix(G12_points, 'G12_points.dat', 'Delimiter', 'tab');
 end
 disp('Process ended!')

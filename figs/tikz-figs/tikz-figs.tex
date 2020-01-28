@@ -43,8 +43,8 @@
             \nextgroupplot [
                 ylabel={$[(A^*A)^{1/2}\phi_{e \yindex}]$},
                 xlabel={$l / a$},
-                ymin=-8, 
-                ymax=23]
+                ymin=-4, 
+                ymax=4]
             \addplot [myOrange] table [
                 mark = none,
                 x index = 0,
@@ -105,7 +105,7 @@
             Forward,
             Backward,
             FEM,
-            Fractional}
+            Fractional};
     \end{semilogyaxis}
     
     \end{tikzpicture}
@@ -151,9 +151,46 @@
     \end{groupplot}
 \end{tikzpicture}
 
+\begin{tikzpicture}
+    \begin{axis}[
+        xlabel={l/a},
+        title={$\Phi_{11}$},
+        ymin=-0.5,
+        ymax=4,
+        grid=both]
+        
+        \addplot [myBlue] table [mark=none, x index=0, y index=1] {data/smoothed_M.dat};
+        \addplot [myOrange] table [mark=none, x index=0, y index=2] {data/smoothed_M.dat};
+        \legend{Original, Smoothed};
+    \end{axis}
+    
+\end{tikzpicture}
+% \begin{tikzpicture}
+%     \begin{axis}[
+%         xlabel={$l/a$},
+%         title={$\Phi_{11}$},
+%         ymin=-1
+%         ymax=4,
+%         grid=both
+%     ]
+%     \addplot [myOrange] table [mark = none, x index = 0, y index = 1] {data/smoothed_M.dat};        
+%     \addplot [myBlue]   table [mark = none, x index = 0, y index = 2] {data/smoothed_M.dat};
+%     \legend{
+%             Original,
+%             Smoothed};
+%     \end{axis}
+% \end{tikzpicture}
+
 %==========================================================
 % G1/2 plot
 %==========================================================
+
+% \begin{tikzpicture}
+%     \begin{axis}
+%         \addplot3+[surf, mark=none, opacity=0.5, faceted color=black]
+%     file {data/G12_points.dat};
+%     \end{axis}    
+% \end{tikzpicture}
 
 
 
