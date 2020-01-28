@@ -81,12 +81,14 @@ j=1;
 smoothed_M = [x', phis(:, i) .* matInt(:, j), phis(:, i) .* matInt(:, j) .* abs(x' - i*l).^(-alpha)];
 plot(smoothed_M(:,1), smoothed_M(:,2), 'DisplayName', 'original');
 plot(smoothed_M(:,1)', smoothed_M(:,3), 'DisplayName', 'smoothed');
-title(['Matrix integrand \varphi_', num2str(i), '[(A^*A){1/2}\varphi_', num2str(j),']'])
 xlabel('l/a')
 grid on
 legend
 
 % % PLOT G1/2
+x = linspace(0,a,50)'';
+y = linspace(0,a,50)'';
+G_12 = zeros(50*50, 1);
 % G_12 = zeros(num_points, num_points);
 % for i=1:num_points
 %     for j=1:num_points
