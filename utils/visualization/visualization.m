@@ -21,9 +21,12 @@ l = a / n;
 tau = pi / (4*a);
 c = 1;
 p0 = 1;
+alpha=-0.5;
 
 % Discretization
-x = linspace(0,a,300);
+num_points = 300;
+x = linspace(0,a,num_points);
+y = linspace(0,a,num_points);
 
 % Get shape functions at each point
 phis = shapeFunctions(n, a, x)';
@@ -59,25 +62,44 @@ xlabel('x')
 hold off
 legend
 
-% Store data
-if storeResFlag == 'y' || storeResFlag == 'Y'
-    writematrix(phi_data, 'out/phi_out.dat', 'Delimiter', 'tab');
-    writematrix(matInt_data,'out/matInt_out.dat', 'Delimiter', 'tab');
-end
-disp('Process ended!')
 
-% 
-% figure(2)
-% hold on
-% 
-% for i=1:n
-%     for j=1:size(matInt,1)
+% Plot \Phi_km =\phi_k matInt_m
+figure()
+hold on
+
+% for i=1:1
+%     for j=1:1
 %         % if j~=i
-%         plot(x, phis(i,:) .* matInt(j, :), 'DisplayName', ['\phi_{', num2str(i), '}', '[(A^*A)^{1/2}\phi_{e', num2str(j),'}]'])
+%         plot(x', phis(:, i) .* matInt(:, j), 'DisplayName', 'original');
+%         plot(x', phis(:, i) .* matInt(:, j) .* abs(x' - i*l), 'DisplayName', 'smoothed')
 %         % end
 %     end
 % end
-% title('Intergrands')
-% xlabel('x')
-% grid on
-% legend
+
+i=1;
+j=1;
+smoothed_M = [x', phis(:, i) .* matInt(:, j), phis(:, i) .* matInt(:, j) .* abs(x' - i*l).^(-alpha)];
+plot(smoothed_M(:,1), smoothed_M(:,2), 'DisplayName', 'original');
+plot(smoothed_M(:,1)', smoothed_M(:,3), 'DisplayName', 'smoothed');
+title(['Matrix integrand \varphi_', num2str(i), '[(A^*A){1/2}\varphi_', num2str(j),']'])
+xlabel('l/a')
+grid on
+legend
+
+% % PLOT G1/2
+% G_12 = zeros(num_points, num_points);
+% for i=1:num_points
+%     for j=1:num_points
+%         G_12(i, j) = G12(x(i), y(j), a);
+%     end
+% end
+
+% figure()
+% surf(x,y,G_12)
+
+if storeResFlag == 'y' || storeResFlag == 'Y'
+    writematrix(phi_data, 'out/phi_out.dat', 'Delimiter', 'tab');
+    writematrix(matInt_data,'out/matInt_out.dat', 'Delimiter', 'tab');
+    writematrix(smoothed_M, 'out/smoothed_M.dat', 'Delimiter', 'tab');
+end
+disp('Process ended!')

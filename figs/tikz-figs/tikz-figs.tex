@@ -49,8 +49,10 @@
                 mark = none,
                 x index = 0,
                 y index = \yindex] {data/matInt_out.dat};
-            % \draw[color=myOrange, dashed] (axis cs:0.2*(\yindex),-8) -- (axis cs:0.2,23);
-            % \draw[color=myOrange, dashed] (axis cs:0.4*(\yindex + 1),-8) -- (axis cs:0.4,23);
+            
+            \draw[color=green, dashed] (axis cs:0.2*\yindex- 0.2,-8) -- (axis cs:0.2*\yindex - 0.2,23);
+            \draw[color=green, dashed] (axis cs:0.2*\yindex,-8) -- (axis cs:0.2*\yindex,23);
+            \draw[color=green, dashed] (axis cs:0.2*\yindex + 0.2,-8) -- (axis cs:0.2*\yindex + 0.2,23);
         \end{groupplot}
     \end{tikzpicture}
 }
@@ -107,6 +109,64 @@
     \end{semilogyaxis}
     
     \end{tikzpicture}
+
+
+%==========================================================
+% \Phi plot
+%==========================================================
+\begin{tikzpicture}
+    \begin{groupplot} [
+        width = 7.8cm,
+        group style = {
+            group size = 2 by 1,
+            horizontal sep=1.5cm, 
+            vertical sep=1.5cm},
+        xmin=0, 
+        ymin=0,
+        no markers,
+        grid=both]
+
+        % Plot shape functions
+        \nextgroupplot [
+            xlabel={$l / a$},
+            ymin=-1,
+            ymax=10,
+            title={$\Phi_{11}$}]
+        \addplot [myBlue] table [
+            mark = none,
+            x index = 0,
+            y index = 1] {data/smoothed_M.dat};
+        
+        % Plot matInt
+        \nextgroupplot [
+            xlabel={$l / a$},
+            ymin=-0.1,
+            ymax=4,
+            title={$\Phi_{11}|x-l|^{-\alpha}$}]
+        \addplot [myOrange] table [
+            mark = none,
+            x index = 0,
+            y index = 2] {data/smoothed_M.dat};
+
+    \end{groupplot}
+\end{tikzpicture}
+
+%==========================================================
+% G1/2 plot
+%==========================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
