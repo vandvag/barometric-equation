@@ -1,4 +1,4 @@
-function pFrac = fractional(C, initialPressure, domainLength, numElements, nodalCoords)
+function pFrac = fractional(C, initialPressure, domainLength, numElements, nodalCoords, numGP)
 %==========================================================================
 % Calculates the solution of the ODE via the fractional calculus method
 %==========================================================================
@@ -21,7 +21,7 @@ a = domainLength;
 
 
 % Gauss-Jacobi parameters
-numGP = 50; % Number of Gauss Points
+% numGP = 50; % Number of Gauss Points
 alpha = -0.5; % Alpha parameter of Gauss-Jacobi quadrature
 
 % Calculation of the left-hand side
