@@ -6,6 +6,9 @@ close all;
 currentFolder = pwd;
 inputFilename = 'input.txt';
 
+numGP = 2:1:100;
+maxerr = zeros(length(numGP), 1);
+
 [maxAltitude, ...
 C,...
 initialAltitude,...
@@ -25,7 +28,15 @@ pressureAnalytical = analyticalSolution(C,...
                                         nodalCoords);
 
 
+for i=1:length(numGP)
 %%
 % Fractional
+pressureFrac = fractional(C, initialPressure, domainLength, numElements, nodalCoords, numGP(i));
+errFrac = abs((pressureFrac - pressureAnalytical) ./ pressureAnalytical);
+maxerr(i) = max(errFrac);
+end
 
-pressureFrac = fractional(C, initialPressure, domainLength, numElements, nodalCoords, numGP);
+plot(numGP, maxerr)
+xlabel('Number of Gauss points')
+ylabel('error')
+title('Maximum error in fractional derivation')
