@@ -102,6 +102,7 @@ end
 
 x = linspace(0,a,300)';
 G_tilde = zeros(300,1);
+G_tilde_smooth = zeros(300,1);
 
 for i=1:300
     G_tilde(i) = - phis(i, 1) * G12(x(i), x(i)/10, a) * p0*c^2/(1+c*a)*exp(c*x(i)/10)*(1+c*(x(i)/10-a));
