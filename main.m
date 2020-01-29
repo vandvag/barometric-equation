@@ -25,7 +25,7 @@ numElements]= readInput(inputFilename);
 
 % Get only the unique inputs for the plots
 resultsToPlot = unique(resultsToPlot);
-
+numGP = 50;
 %%
 % Discretize the domain
 [nodalCoords, locationMatrix] = mesher(domainLength,numElements);
@@ -56,7 +56,7 @@ pressureFEM = FEM(C, initialPressure, nodalCoords, locationMatrix);
 %%
 % Fractional
 
-pressureFrac = fractional(C, initialPressure, domainLength, numElements, nodalCoords);
+pressureFrac = fractional(C, initialPressure, domainLength, numElements, nodalCoords, numGP);
 
 %%
 % Find relative error

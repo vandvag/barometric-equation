@@ -13,8 +13,8 @@ resultsToPlot,...
 domainLength,...
 numElements]= readInput(inputFilename);
 
-numElements = linspace(20, 200, 10);
-
+numElements = 2:1:100;
+numGP = 50;
 maxerrForward = zeros(length(numElements), 1);
 maxerrBackward = zeros(length(numElements), 1);
 maxerrFEM = zeros(length(numElements), 1);
@@ -55,7 +55,7 @@ pressureFEM = FEM(C, initialPressure, nodalCoords, locationMatrix);
 %%
 % Fractional
 
-pressureFrac = fractional(C, initialPressure, domainLength, numElements(i), nodalCoords);
+pressureFrac = fractional(C, initialPressure, domainLength, numElements(i), nodalCoords, numGP);
 
 %%
 % Find relative error
